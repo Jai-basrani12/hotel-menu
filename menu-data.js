@@ -27,7 +27,7 @@ const RESTAURANT = {
   address: "Pushkar By-Pass Road, Karni Nagar, Ajmer, Rajasthan 305004",
   phone: "+91 145 262 4890",
   phoneDisplay: "+91 145 262 4890",
-  whatsapp: "919829045678", // Digits only with country code (91 for India)
+  whatsapp: "917877756598", // Digits only with country code (91 for India)
   currencySymbol: "₹",
   taxPercent: 5, // 5% GST
   taxNote: "Government taxes (5% GST) applicable. No service charge.",
