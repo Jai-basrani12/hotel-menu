@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#5B132B">
+    <meta name="description" content="Hotel Grand Xenia - Digital Menu, In-Room Dining & 24/7 Room Service. Authentic Rajasthani delicacies, North Indian curries, tandoori starters, and desserts in Ajmer.">
+    <title>Hotel Grand Xenia - Digital Menu & Room Service</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#fdf2f4',
+                            100: '#f9e2e7',
+                            700: '#70142a',
+                            800: '#4e070f',
+                            900: '#38040a',
+                            DEFAULT: '#5B132B',
+                        },
+                        gold: {
+                            100: '#fff9d6',
+                            400: '#e6ca65',
+                            500: '#D4AF37',
+                            600: '#b48e23',
+                            700: '#8c6c12',
+                            DEFAULT: '#D4AF37',
+                        },
+                        cream: {
+                            50: '#fffdf9',
+                            100: '#FAF4E8',
+                            200: '#F4ECE0',
+                            300: '#E9DEC9',
+                            DEFAULT: '#FAF4E8',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-cream-100 text-gray-800 font-sans antialiased min-h-screen pb-28 selection:bg-gold-500 selection:text-maroon-900">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-maroon-900 text-gold-400 text-xs py-1.5 px-4 text-center border-b border-gold-500/30 font-medium tracking-wide flex items-center justify-center gap-2">
+        <i class="fa-solid fa-bell-concierge text-gold-500 text-xs" aria-hidden="true"></i>
+        <span id="announcementText">Welcome to Hotel Grand Xenia • 24/7 Room Service & Fine Dining</span>
+    </div>
+
+    <!-- Header Section -->
+    <header class="relative bg-maroon text-white pt-8 pb-10 px-4 sm:px-8 shadow-xl overflow-hidden border-b-4 border-gold-500">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 bg-jali opacity-10 pointer-events-none"></div>
+        <div class="absolute -right-12 -bottom-12 w-48 h-48 rounded-full border-8 border-gold-500/10 pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 flex flex-col items-center text-center">
+            
+            <!-- Dynamic Room / Table Badge (from URL ?table=5 or ?room=204) -->
+            <div id="locationBadge" class="hidden inline-flex items-center gap-2 bg-maroon-900/90 border border-gold-500 text-gold-300 text-xs font-bold px-4 py-1.5 rounded-full mb-3 shadow-md tracking-wider uppercase">
+                <i class="fa-solid fa-bell-concierge text-gold-500"></i>
+                <span id="locationBadgeText">Room 204</span>
+            </div>
+
+            <!-- Royal Badge Logo Icon -->
+            <div class="w-16 h-16 rounded-full bg-maroon-900 border-2 border-gold-500 flex items-center justify-center shadow-lg mb-3 gold-border-glow">
+                <i class="fa-solid fa-crown text-gold-500 text-2xl"></i>
+            </div>
+
+            <!-- Hotel Name & Tagline -->
+            <h1 id="restaurantName" class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-wider gold-gradient-text uppercase">
+                Hotel Grand Xenia
+            </h1>
+            <p id="restaurantTagline" class="text-gold-400/90 text-sm sm:text-base font-serif italic tracking-wide mt-1">
+                Fine Dining & 24-Hour Room Service
+            </p>
+
+            <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent my-3"></div>
+
+            <!-- Address & Location -->
+            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs sm:text-sm text-gray-200 font-light max-w-xl">
+                <span class="flex items-center gap-1.5" id="restaurantAddress">
+                    <i class="fa-solid fa-location-dot text-gold-500"></i>
+                    Pushkar By-Pass Road, Karni Nagar, Ajmer, Rajasthan 305004
+                </span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 mt-5">
+                <a id="callReceptionBtn" href="tel:+911452624890" class="inline-flex items-center gap-2 bg-maroon-900/80 hover:bg-maroon-900 border border-gold-500/60 text-gold-400 text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200 active:scale-95 shadow">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Call Reception</span>
+                </a>
+                <a id="whatsappHelpdeskBtn" href="https://wa.me/919829045678" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold px-4 py-2 rounded-full transition-all duration-200 active:scale-95 shadow">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span>WhatsApp Helpdesk</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 pt-6">
+
+        <!-- Sticky Controls Bar (Search, Filter Chips, Category Tabs) -->
+        <div class="sticky top-0 z-30 bg-cream-100/95 backdrop-blur-md pt-2 pb-3 border-b border-maroon/10 shadow-sm transition-all duration-200">
+            <!-- Search Input -->
+            <div class="relative mb-3">
+                <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                <input type="text" id="searchInput" placeholder="Search dishes (e.g. Paneer, Laal Maas, Biryani)..." 
+                       class="w-full bg-white text-gray-800 placeholder-gray-400 text-sm pl-10 pr-10 py-2.5 rounded-xl border border-gold-500/40 focus:outline-none focus:ring-2 focus:ring-maroon focus:border-transparent shadow-sm transition-all">
+                <button id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-1" aria-label="Clear search">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Filter Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1" role="radiogroup" aria-label="Dish filters">
+                <button data-filter="all" class="filter-btn active-filter px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 bg-maroon text-gold-400 shadow-sm border border-gold-500/50">
+                    <i class="fa-solid fa-utensils text-[11px]"></i> All Dishes
+                </button>
+                <button data-filter="veg" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 bg-white text-gray-700 border border-gray-300 hover:border-emerald-500">
+                    <span class="w-2.5 h-2.5 rounded-sm border border-emerald-600 flex items-center justify-center p-0.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    </span>
+                    Pure Veg
+                </button>
+                <button data-filter="non-veg" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 bg-white text-gray-700 border border-gray-300 hover:border-rose-600">
+                    <span class="w-2.5 h-2.5 rounded-sm border border-rose-600 flex items-center justify-center p-0.5">
+                        <span class="w-0 h-0 border-l-[3px] border-r-[3px] border-b-[5px] border-l-transparent border-r-transparent border-b-rose-600"></span>
+                    </span>
+                    Non-Veg
+                </button>
+                <button data-filter="special" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all flex items-center gap-1.5 bg-white text-amber-800 border border-amber-300 hover:border-gold-500">
+                    <i class="fa-solid fa-star text-gold-500 text-[11px]"></i> Chef's Specials
+                </button>
+            </div>
+
+            <!-- Scrollable Category Nav Bar -->
+            <nav class="flex items-center gap-2 overflow-x-auto no-scrollbar mt-3 border-t border-maroon/10 pt-2" id="categoryNav" aria-label="Menu categories">
+                <!-- Dynamically Rendered Category Tabs -->
+            </nav>
+        </div>
+
+        <!-- Dish List Container -->
+        <div id="menuContainer" class="mt-6 space-y-10">
+            <!-- Dynamic Content Injected Here -->
+        </div>
+
+        <!-- Empty Search Result State -->
+        <div id="emptyState" class="hidden text-center py-16 px-4">
+            <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-maroon/10 flex items-center justify-center text-maroon text-2xl">
+                <i class="fa-solid fa-utensils"></i>
+            </div>
+            <h3 class="text-lg font-bold text-maroon font-serif">No Dishes Found</h3>
+            <p class="text-xs text-gray-500 mt-1 max-w-xs mx-auto">We couldn't find any dish matching your filter or search keyword.</p>
+            <button id="resetFiltersBtn" class="mt-4 px-4 py-2 bg-maroon text-gold-400 text-xs font-semibold rounded-lg border border-gold-500/40">
+                Reset All Filters
+            </button>
+        </div>
+
+    </main>
+
+    <!-- Hotel Footer -->
+    <footer class="mt-16 bg-maroon-900 text-white pt-10 pb-24 px-4 border-t-2 border-gold-500/40">
+        <div class="max-w-4xl mx-auto text-center space-y-4">
+            <div class="w-10 h-10 rounded-full bg-maroon border border-gold-500/60 mx-auto flex items-center justify-center text-gold-500">
+                <i class="fa-solid fa-crown text-base"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold gold-gradient-text uppercase">Hotel Grand Xenia</h3>
+            <p class="text-xs text-gray-300 max-w-md mx-auto leading-relaxed">
+                Pushkar By-Pass Road, Karni Nagar, Ajmer, Rajasthan 305004<br>
+                For in-room assistance, dial reception from your room intercom.
+            </p>
+            <div class="bg-maroon/80 border border-gold-500/30 rounded-xl p-3 max-w-md mx-auto text-[11px] text-gold-300/90 text-left space-y-1">
+                <p>• All prices are in Indian Rupees (₹). Government taxes (5% GST) applicable.</p>
+                <p>• Please inform our service associates of any food allergies or dietary preferences.</p>
+            </div>
+            <p class="text-[10px] text-gray-400 pt-4 border-t border-maroon-800">
+                © <span id="footerYear"></span> Hotel Grand Xenia. Designed for Digital Dining & QR Room Service.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Bottom Cart Bar -->
+    <div id="cartBar" class="fixed bottom-0 left-0 right-0 z-40 bg-maroon text-white p-3 sm:p-4 border-t-2 border-gold-500 shadow-2xl transition-transform duration-300 translate-y-full">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+            <!-- Left Info -->
+            <div class="flex items-center gap-3">
+                <div class="relative w-10 h-10 rounded-full bg-maroon-900 border border-gold-500/60 flex items-center justify-center text-gold-400">
+                    <i class="fa-solid fa-basket-shopping text-base"></i>
+                    <span id="cartBadgeCount" class="absolute -top-1 -right-1 bg-gold-500 text-maroon-900 text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">
+                        0
+                    </span>
+                </div>
+                <div>
+                    <div class="text-xs text-gold-400/90 tracking-wide font-medium">Your Selected Order</div>
+                    <div class="text-base font-bold text-white tracking-wide" id="cartBarTotal">₹0</div>
+                </div>
+            </div>
+
+            <!-- Right CTA -->
+            <button id="openCartBtn" class="bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-maroon-900 text-xs sm:text-sm font-bold px-5 py-2.5 rounded-xl shadow-lg flex items-center gap-2 transition-all active:scale-95">
+                <span>View Cart & Order</span>
+                <i class="fa-solid fa-arrow-right text-xs"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Slide-Up Order Drawer / Modal -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 drawer-overlay">
+        <!-- Backdrop -->
+        <div id="drawerBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"></div>
+
+        <!-- Drawer Body -->
+        <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-cream-50 rounded-t-3xl shadow-2xl border-t-2 border-gold-500 max-h-[90vh] flex flex-col pointer-events-auto transform translate-y-full drawer-content">
+            
+            <!-- Drawer Header -->
+            <div class="bg-maroon text-white px-5 py-4 rounded-t-3xl border-b border-gold-500/30 flex items-center justify-between relative">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-maroon-900 border border-gold-500 flex items-center justify-center text-gold-400 text-sm">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-serif text-lg font-bold text-gold-400">Room Service Order</h2>
+                        <p class="text-[11px] text-gray-300">Hotel Grand Xenia • Direct WhatsApp Kitchen</p>
+                    </div>
+                </div>
+                <button id="closeCartBtn" class="w-8 h-8 rounded-full bg-maroon-900/80 hover:bg-maroon-900 text-gold-400 flex items-center justify-center transition-colors" aria-label="Close cart">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            </div>
+
+            <!-- Drawer Scrollable Content -->
+            <div class="overflow-y-auto p-5 space-y-5 flex-1">
+
+                <!-- Service Location Selection -->
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm space-y-3">
+                    <label class="block text-xs font-bold text-maroon uppercase tracking-wider">
+                        <i class="fa-solid fa-bell-concierge text-gold-600 mr-1"></i> Delivery Details
+                    </label>
+
+                    <div class="grid grid-cols-2 gap-2 pb-1">
+                        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gray-200 cursor-pointer bg-cream-100/50 hover:bg-cream-100 has-[:checked]:border-maroon has-[:checked]:bg-maroon/5 transition-all">
+                            <input type="radio" name="orderType" value="Room Service" checked class="accent-maroon">
+                            <div>
+                                <div class="text-xs font-semibold text-gray-800">In-Room Delivery</div>
+                                <div class="text-[10px] text-gray-500">Room Service</div>
+                            </div>
+                        </label>
+                        <label class="flex items-center gap-2 p-2.5 rounded-xl border border-gray-200 cursor-pointer bg-cream-100/50 hover:bg-cream-100 has-[:checked]:border-maroon has-[:checked]:bg-maroon/5 transition-all">
+                            <input type="radio" name="orderType" value="Restaurant Table" class="accent-maroon">
+                            <div>
+                                <div class="text-xs font-semibold text-gray-800">Dine-in Table</div>
+                                <div class="text-[10px] text-gray-500">Restaurant Hall</div>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1" id="locationLabel">
+                                Room Number <span class="text-rose-600">*</span>
+                            </label>
+                            <input type="text" id="roomNumberInput" placeholder="e.g. 204" required
+                                   class="w-full bg-white text-gray-800 text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-maroon">
+                            <p id="roomErrorMsg" class="hidden text-[10px] text-rose-600 mt-1 font-medium">Please enter your Room or Table number.</p>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-semibold text-gray-600 mb-1">
+                                Guest Name (Optional)
+                            </label>
+                            <input type="text" id="guestNameInput" placeholder="e.g. Mr. Sharma"
+                                   class="w-full bg-white text-gray-800 text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-maroon">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Items Review List -->
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
+                    <h3 class="text-xs font-bold text-maroon uppercase tracking-wider mb-3">
+                        <i class="fa-solid fa-list-check text-gold-600 mr-1"></i> Order Items
+                    </h3>
+                    <div id="cartItemsList" class="divide-y divide-gray-100 max-h-48 overflow-y-auto pr-1">
+                        <!-- Dynamic Cart Items -->
+                    </div>
+                </div>
+
+                <!-- Special Cooking Instructions -->
+                <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm">
+                    <label class="block text-xs font-bold text-maroon uppercase tracking-wider mb-1.5">
+                        <i class="fa-solid fa-pen-to-square text-gold-600 mr-1"></i> Cooking Instructions / Notes
+                    </label>
+                    <textarea id="cookingNotesInput" rows="2" placeholder="e.g. Make it extra spicy, less ghee, bring extra cutlery..." 
+                              class="w-full bg-white text-gray-800 text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-maroon resize-none"></textarea>
+                </div>
+
+                <!-- Bill Summary -->
+                <div class="bg-maroon-900/5 p-4 rounded-2xl border border-maroon/10 space-y-2 text-xs">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Items Subtotal</span>
+                        <span class="font-semibold" id="summarySubtotal">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>GST / Taxes (5%)</span>
+                        <span id="summaryTax">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Room Delivery Charge</span>
+                        <span class="text-emerald-700 font-bold">FREE</span>
+                    </div>
+                    <div class="border-t border-maroon/20 pt-2 flex justify-between items-center text-sm font-bold text-maroon">
+                        <span>Grand Total</span>
+                        <span class="text-base text-maroon font-serif" id="summaryGrandTotal">₹0</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Drawer Footer CTA -->
+            <div class="p-4 bg-white border-t border-gray-200 rounded-b-3xl">
+                <button id="sendWhatsAppOrderBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95 text-sm sm:text-base">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    <span>Place Order via WhatsApp</span>
+                </button>
+                <p class="text-[10px] text-center text-gray-500 mt-2">
+                    Clicking will open WhatsApp with your itemized order pre-filled.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-maroon text-gold-400 border border-gold-500/50 px-4 py-2.5 rounded-full shadow-2xl text-xs font-semibold flex items-center gap-2 transition-all duration-300 -translate-y-16 opacity-0 pointer-events-none">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+        <span id="toastMsg">Item added to cart</span>
+    </div>
+
+    <!-- External Menu Data & Application Logic -->
+    <script src="menu-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

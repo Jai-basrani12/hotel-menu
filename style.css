@@ -1,0 +1,87 @@
+/* ==========================================================================
+   HOTEL GRAND XENIA - HERITAGE MAROON & GOLD CUSTOM STYLES
+   ========================================================================== */
+
+/* Custom heritage scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #FAF4E8;
+}
+::-webkit-scrollbar-thumb {
+    background: #5B132B;
+    border-radius: 4px;
+}
+
+/* Hide scrollbar for clean category tab scrolling */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Subtle Indian Rajasthani Jali motif pattern overlay */
+.bg-jali {
+    background-color: #5B132B;
+    background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #5B132B 0.75px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+}
+
+.gold-gradient-text {
+    background: linear-gradient(135deg, #FFE89C 0%, #D4AF37 50%, #9E7D1C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+}
+
+/* Modal and Drawer transitions */
+.drawer-overlay {
+    transition: opacity 0.3s ease-in-out;
+}
+.drawer-content {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Category tab active state */
+.category-tab.active-cat {
+    background-color: #5B132B !important;
+    color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    box-shadow: 0 2px 8px rgba(91, 19, 43, 0.2);
+}
+.category-tab.active-cat span:last-child {
+    background-color: rgba(212, 175, 55, 0.25) !important;
+    color: #fff9d6 !important;
+}
+
+/* Smooth anchor offset for sticky bar */
+.scroll-mt-section {
+    scroll-margin-top: 145px;
+}
+
+/* Accessible focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
